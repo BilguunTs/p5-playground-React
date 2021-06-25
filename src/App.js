@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import Sketch from "react-p5";
 
-function App() {
+let x = 50;
+let y = 50;
+const App = () => {
+  const setup = (p5, canvasParentRef) => {
+    p5.createCanvas(p5.windowWidth, p5.windowHeight).parent(canvasParentRef);
+  };
+
+  const draw = (p5) => {
+    p5.ellipse(p5.mouseX, p5.mouseY, 30, 30);
+  };
+  // const mousePressed = (p5) => {};
+  // const windowResized = (p5) => {
+  //   p5.resizeCanvas(p5.windowWidth, p5.windowHeight, false);
+  // };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Sketch
+      setup={setup}
+      windowResized={windowResized}
+      mousePressed={mousePressed}
+      draw={draw}
+    />
   );
-}
-
+};
 export default App;
